@@ -61,6 +61,7 @@ services:
       - USER_PASSWORD=your_secure_password_here  # SSH 접속 비번
       - GIT_USER_NAME=ImSeongBin                 # Git 이름 자동 설정
       - GIT_USER_EMAIL=your-email@example.com    # Git 이메일 자동 설정
+      - GITHUB_TOKEN=ghp_ABC123yourActualTokenHere
       - CLAUDE_API_KEY=${CLAUDE_API_KEY}         # 외부 환경변수에서 가져오기
     
     # 3. .env 파일 병용 (민감한 정보는 여기에)
