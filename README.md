@@ -58,6 +58,7 @@ services:
     # 2. 환경 변수 직접 설정
     environment:
       - SSH_PORT=2222
+      - USERNAME=devuser
       - USER_PASSWORD=your_secure_password_here  # SSH 접속 비번
       - GIT_USER_NAME=ImSeongBin                 # Git 이름 자동 설정
       - GIT_USER_EMAIL=your-email@example.com    # Git 이메일 자동 설정
