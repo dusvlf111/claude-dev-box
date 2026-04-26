@@ -44,7 +44,42 @@ services:
       - ./claude-auth:/home/devuser/.claude
     restart: unless-stopped
 ```
-
+```yaml
+services:
+  dev:
+    image: ghcr.io/dusvlf111/claude-dev-box:main
+    container_name: claude-dev-box
+    restart: unless-stopped
+    
+    # 1. 포트 설정 (호스트 2222 -> 컨테이너 2222)
+    ports:
+      - "2222:2222"
+    
+    # 2. 환경 변수 직접 설정
+    environment:
+      - SSH_PORT=2222
+      - USER_PASSWORD=your_secure_password_here  # SSH 접속 비번
+      - GIT_USER_NAME=ImSeongBin                 # Git 이름 자동 설정
+      - GIT_USER_EMAIL=your-email@example.com    # Git 이메일 자동 설정
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}         # 외부 환경변수에서 가져오기
+    
+    # 3. .env 파일 병용 (민감한 정보는 여기에)
+    env_file:
+      - .env
+      
+    # 4. 볼륨 설정
+    volumes:
+      - ./workspace:/home/devuser/workspace
+      - ./claude-auth:/home/devuser/.claude      # Claude 인증 정보 유지
+      - /var/run/docker.sock:/var/run/docker.sock # (선택) 컨테이너 안에서 도커 사용 시
+      
+    # 리소스 제한 (선택 사항)
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 4G
+```
 ### 3. 실행
 
 ```bash
