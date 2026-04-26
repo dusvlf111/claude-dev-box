@@ -1,0 +1,2 @@
+# -----
+nvm,pnpm,node 
