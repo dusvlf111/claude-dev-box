@@ -81,6 +81,16 @@ services:
           cpus: '4.0'
           memory: 4G
 ```
+```
+# vscode 설정
+Host main-dev-server
+    HostName [테일스케일IP]
+    Port 2222
+    User devuser
+    # ⭐ 키가 바뀌어도 경고를 띄우지 않고, 새로운 키를 자동으로 저장함
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+```
 ### 3. 실행
 
 ```bash
